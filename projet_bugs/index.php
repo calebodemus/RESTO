@@ -4,7 +4,7 @@ header("Content-Type: text/html; charset=utf-8");
 require('app/server.php');
 $page = "home"; 
 $mysqli = mysqli_connect("localhost", "root", "troiswa", "bugs"); 
-
+/*| Il faut vérifier si la connection mysql a reussi ! |*/
 
 $tab = array("home" => "content/home",
 			  "carte"=>"content/carte",
