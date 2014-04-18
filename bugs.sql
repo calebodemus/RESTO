@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client: localhost
--- Généré le: Ven 18 Avril 2014 à 11:57
+-- Généré le: Ven 18 Avril 2014 à 14:24
 -- Version du serveur: 5.5.35-0ubuntu0.13.10.2
 -- Version de PHP: 5.5.3-1ubuntu2.1
 
@@ -33,7 +33,18 @@ CREATE TABLE IF NOT EXISTS `carte` (
   `prix` float NOT NULL,
   PRIMARY KEY (`id`),
   KEY `id_categorie` (`id_categorie`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=6 ;
+
+--
+-- Contenu de la table `carte`
+--
+
+INSERT INTO `carte` (`id`, `id_categorie`, `libelle`, `prix`) VALUES
+(1, 1, 'sauterelles sautées', 5),
+(2, 2, 'chenilles aux morilles', 10),
+(3, 3, 'sorbet de fourmis', 6),
+(4, 4, 'coca-cola', 3),
+(5, 5, 'mojito', 8);
 
 -- --------------------------------------------------------
 
@@ -45,7 +56,19 @@ CREATE TABLE IF NOT EXISTS `categorie` (
   `id` int(4) NOT NULL AUTO_INCREMENT,
   `libelle` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=7 ;
+
+--
+-- Contenu de la table `categorie`
+--
+
+INSERT INTO `categorie` (`id`, `libelle`) VALUES
+(1, 'entrée'),
+(2, 'plat'),
+(3, 'dessert'),
+(4, 'bière'),
+(5, 'cocktail'),
+(6, 'vin');
 
 -- --------------------------------------------------------
 
@@ -106,15 +129,15 @@ CREATE TABLE IF NOT EXISTS `livre` (
 
 CREATE TABLE IF NOT EXISTS `menu` (
   `id` int(4) NOT NULL AUTO_INCREMENT,
-  `id_carte` int(4) NOT NULL,
+  `id_entree` int(4) NOT NULL,
   `id_plat` int(4) NOT NULL,
   `id_dessert` int(4) NOT NULL,
   `libelle` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
   `prix` float NOT NULL,
   PRIMARY KEY (`id`),
-  UNIQUE KEY `id_plat` (`id_plat`),
-  UNIQUE KEY `id_dessert` (`id_dessert`),
-  KEY `id_carte` (`id_carte`,`id_plat`,`id_dessert`)
+  KEY `id_carte` (`id_entree`,`id_plat`,`id_dessert`),
+  KEY `id_plat` (`id_plat`),
+  KEY `id_dessert` (`id_dessert`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
@@ -230,9 +253,9 @@ ALTER TABLE `livre`
 -- Contraintes pour la table `menu`
 --
 ALTER TABLE `menu`
-  ADD CONSTRAINT `menu_ibfk_3` FOREIGN KEY (`id_dessert`) REFERENCES `carte` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `menu_ibfk_1` FOREIGN KEY (`id_carte`) REFERENCES `carte` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `menu_ibfk_2` FOREIGN KEY (`id_plat`) REFERENCES `carte` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `menu_ibfk_4` FOREIGN KEY (`id_entree`) REFERENCES `carte` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `menu_ibfk_2` FOREIGN KEY (`id_plat`) REFERENCES `carte` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `menu_ibfk_3` FOREIGN KEY (`id_dessert`) REFERENCES `carte` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Contraintes pour la table `reservation`
