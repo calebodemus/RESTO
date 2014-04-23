@@ -33,7 +33,7 @@ $tab = array("home" => "content/home",
 	header('location:index.php?page=home');
 	}
     
-require("app/skel.php");
+ require("app/skel.php");
 
 
 
