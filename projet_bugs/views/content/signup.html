@@ -2,72 +2,37 @@
 
 <div id="container">
 
-    <form action="index.php?page=signup" method="post" name="formInscription" autocomplete="on">
+        <form class="FormInscr" action="index.php?page=signup" method="post" name="formInscription" autocomplete="on">
 
-    <p>
         <span style="color:red;"><?=$error?></span>
-    </p>
 
-    <p>
         <label for="login">Login<span class="required">*</span></label>
-        <input type="text" name="login" id="login" required="required" placeholder="Votre login" value="toto" autofocus/>
-    </p>
-
-    <p>
+        <input type="text" name="login" id="login" required="required" placeholder="Votre login" autofocus/>
         <label for="nom">Nom<span class="required">*</span></label>
-        <input type="text" name="nom" id="nom" required="required" placeholder="Votre nom" value="toto"/>
-    </p>
-
-    <p>
+        <input type="text" name="nom" id="nom" required="required" placeholder="Votre nom"/>
         <label for="prenom">Prénom<span class="required">*</span></label>
-        <input type="text" name="prenom" id="prenom" required="required" placeholder="Votre prénom" value="toto"/>
-    </p>
-
-    <p>
+        <input type="text" name="prenom" id="prenom" required="required" placeholder="Votre prénom"/>
         <label for="password">Password<span class="required">*</span></label>
         <input type="password" name="password" id="password" required="required" placeholder="Votre password"/>
-    </p>
-
-    <p>
-    <label for="pass">Retype Password<span class="required">*</span></label>
-    <input type="password" name="password_" placeholder="Retype Password"/>
-    </p>
-
-    <p>
+        <label for="pass">Retype Password<span class="required">*</span></label>
+        <input type="password" name="password_" placeholder="Retype Password"/>
         <label for="mail">Email<span class="required">*</span></label>
-        <input type="email" name="mail" id="mail" required="required" placeholder="Votre Email" value="a@a.com"/>
-    </p>
-
-    <p>
+        <input type="email" name="mail" id="mail" required="required" placeholder="Votre Email"/>
         <label for="tel">Tél<span class="required">*</span></label>
-        <input type="text" name="tel" id="tel" required="required" placeholder="Votre tel" value="0680808080"/>
-    </p>
-
-    <p>
+        <input type="text" name="tel" id="tel" required="required" placeholder="Votre tel"/>
         <label for="adresse">Adresse</label>
         <input type="text" name="adresse" id="adresse" placeholder="Votre adresse"/>
-    </p>
-
-    <p>
         <label for="cp">Code postal</label>
         <input type="text" name="cp" id="cp" placeholder="Votre code postal"/>
-    </p>
-
-    <p>
         <label for="ville">Ville</label>
         <input type="text" name="ville" id="ville" placeholder="Votre ville"/>
-    </p>
-
-   <p>
         <label for="societe">Société</label>
         <input type="text" name="societe" id="societe" placeholder="Votre société"/>
-    </p>
 
     <p class="indication">Tous les champs avec une <span class="required">*</span> sont obligatoires</p>
+        <label>&nbsp</label>
+        <input class"inpbtn" type="submit" value="Envoyez"/>
 
-    <p>
-        <input type="submit" value="Envoyez"/>
-    </p>
 
 
     </form>

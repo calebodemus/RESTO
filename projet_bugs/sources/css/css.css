@@ -69,6 +69,7 @@ nav
 				height: 3em;
 				max-width: 17em;
 				width: 25%;
+				clear: both;
 				}
 
 nav ul
@@ -115,11 +116,6 @@ footer
 				left: 0;
 				right: 0;
 				bottom: 0;
-				}
-
-input
-				{
-
 				}
 
 .InpUseName
@@ -210,50 +206,96 @@ input
 .inlogin
 				{
 				position: relative;
-				top: -7.7em;
+				top: -8.5em;
 				width: 230px;
 				}
 
 input
 				{
-				background-color: rgba(255, 255, 255, 0.08);
-				border: none;
-				padding: 0.3em;
+				background-color: rgba(255, 255, 255, 0.2);
+				border: medium none;
+				color: #FFFFFF;
 				margin-top: 0.125em;
+				padding: 0.3em;
+				width: 14em;
+				margin: 0.0625em;
 				}
 
-input.inpname
+input .inpname
 				{
 
 				}
 
-input.inppass
+input .inppass
 				{
 
 				}
 
-input.inpbtn
+input .inpbtn
 				{
 				border-radius: 0.125em;
+				margin-right:6px;
+				width: 5em;
+				}
+
+input .inpbtn:hover
+				{
+				background-color: rgba(255, 255, 255, 0.16);
 				}
 
 .txterror
 				{
 				color: rgba(120, 120, 120, 1);
-				left: 4.8em;
+				left: 0em;
 				position: relative;
-				top: -2.7em;
+				top: -1.9em;
 				}
 
+.HomeSlider
+				{
+				width: ;
+				height: ;
+				max-width: ;
+				max-height: ;
+				background-color: rgba(255, 200, 158, 1);
+				color: rgba(128, 128, 128, 1);
+				}
 
+#container
+				{
+				width: 14em;
+				}
 
+#container label
+				{
+				color: rgba(220, 220, 220, 1);
+				float: left;
+				line-height: 1em;
+				margin-right: 0.3em;
+				margin-top: 0.3em;
+				text-align: right;
+				width: 14em;
+				}
 
+.FormInscr
+				{
+				width: 28em;
+				margin-left: 1em
+				}
 
+.indication
+				{
+				color: rgba(255, 255, 255, 1);
+				font-size: 0.8em;
+				line-height: 1.7em;
+				margin-right: 1em;
+				text-align: right;
+				}
 
-
-
-
-
+.required
+				{
+				color: rgba(256, 0, 0, 1);
+				}
 
 
 
