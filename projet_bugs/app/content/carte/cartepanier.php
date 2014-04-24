@@ -87,7 +87,7 @@
                                 <input type="label" value="'. $libelle .'"/>
                                 <input type="submit" formaction="index.php?page=' . $_GET['page'] . '&cart=' . $cart . '&action=ms&key=1&id=' . $key .'" value="-"/>
                                 <input type="text" readonly name="' . $key . '" value="' . $quantite . '" placeholder="quantité"/>
-                                <input type="submit" formaction="index.php?page=' . $_GET['page'] . '&cart=' . $cart . '&action=ma&key=1&id=' . $key . '" value="+" formmethod="post"/>
+                                <input type="submit" formaction="index.php?page=' . $_GET['page'] . '&cart=' . $cart . '&action=ma&key=1&id=' . $key . '" value="+"/>
                                 <input type="label" value="' . $prix . ' €" />
                                 <p>' . $composition . '</p>
                             </form>';

@@ -178,40 +178,6 @@ if (isset($_GET['action']))
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-$pourcentage = 0;
-$message = '';
-$code = '';
-
-if (isset($_POST["code_reduction"]))
-{
-    $code = mysqli_real_escape_string($mysqli,$_POST["code_reduction"]);
-    $query = 'SELECT * FROM reduction WHERE code = "' . $code . '" ';
-    $res = mysqli_query($mysqli,$query);
-    $ligne = mysqli_fetch_assoc($res);
-
-    if (isset($ligne))
-    {
-        $pourcentage = $ligne["pourcentage"];
-        $message = "Vous avez droit à une réduction de " . $pourcentage . "% sur le montant total de votre commande";
-    }
-
-}
-
-$bon_reduction = '<form action="index.php?page=voirpanier" method = "post">
-                    <h3>AJOUTER UN BON DE REDUCTION</h3>
-                    <input type="text" placeholder="Saisissez votre code de réduction" name="code_reduction" value="' . $code . '"/>
-                    <input type="submit" value="Valider" />
-                    <p>'. $message .'</p>
-                  </form>';
-
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
     $panier = '';
     $size = 0;
     $i = 0;
@@ -245,13 +211,13 @@ $bon_reduction = '<form action="index.php?page=voirpanier" method = "post">
                 $prix = $ligne['prix_emporter'] *  $value;
 
             $panier .= '<form action="index.php?page=' . $_GET['page'] . '&action=*&id=' . $key . '" method="post">
-                                <a href="index.php?page=' . $_GET['page'] . '&action=d&id=' . $key . '" class="panier_delete"><img src="source/img/remove.png" alt="delete"/></a>
-                                <input type="label" value="'. $libelle .'"/>
-                                <input type="submit" formaction="index.php?page=' . $_GET['page'] . '&action=s&id=' . $key .'" value="-"/>
-                                <input type="number" name="' . $key . '" oninput="this.form.submit()" value="' . $value . '" placeholder="quantité"/>
-                                <input type="submit" formaction="index.php?page=' . $_GET['page'] . '&action=a&id=' . $key . '" value="+"/>
-                                <input type="label" value="' . $prix . ' €" />
-                            </form>';
+                            <a href="index.php?page=' . $_GET['page'] . '&action=d&id=' . $key . '" class="panier_delete"><img src="source/img/remove.png" alt="delete"/></a>
+                            <input type="label" value="'. $libelle .'"/>
+                            <input type="submit" formaction="index.php?page=' . $_GET['page'] . '&action=s&id=' . $key .'" value="-"/>
+                            <input type="number" name="' . $key . '" oninput="this.form.submit()" value="' . $value . '" placeholder="quantité"/>
+                            <input type="submit" formaction="index.php?page=' . $_GET['page'] . '&action=a&id=' . $key . '" value="+"/>
+                            <input type="label" value="' . $prix . ' €" />
+                        </form>';
             $nb_produit += 1 * $value;
         }
     }
@@ -296,19 +262,110 @@ $bon_reduction = '<form action="index.php?page=voirpanier" method = "post">
             }
 
             $panier .= '<form action="index.php?page=' . $_GET['page'] . '&action=m*&id=' . $key . '" method="post">
-                                    <a href="index.php?page=' . $_GET['page'] . '&action=md&key=1&id=' . $key . '" class="panier_delete"><img src="source/img/remove.png" alt="delete"/></a>
-                                    <input type="label" value="'. $libelle .'"/>
-                                    <input type="submit" formaction="index.php?page=' . $_GET['page'] . '&action=ms&key=1&id=' . $key .'" value="-"/>
-                                    <input type="text" readonly name="' . $key . '" value="' . $quantite . '" placeholder="quantité"/>
-                                    <input type="submit" formaction="index.php?page=' . $_GET['page'] . '&action=ma&key=1&id=' . $key . '" value="+" formmethod="post"/>
-                                    <input type="label" value="' . $prix . ' €" />
-                                    <p>' . $composition . '</p>
-                                </form>';
+                            <a href="index.php?page=' . $_GET['page'] . '&action=md&key=1&id=' . $key . '" class="panier_delete"><img src="source/img/remove.png" alt="delete"/></a>
+                            <input type="label" value="'. $libelle .'"/>
+                            <input type="submit" formaction="index.php?page=' . $_GET['page'] . '&action=ms&key=1&id=' . $key .'" value="-"/>
+                            <input type="text" readonly name="' . $key . '" value="' . $quantite . '" placeholder="quantité"/>
+                            <input type="submit" formaction="index.php?page=' . $_GET['page'] . '&action=ma&key=1&id=' . $key . '" value="+" formmethod="post"/>
+                            <input type="label" value="' . $prix . ' €" />
+                            <p>' . $composition . '</p>
+                        </form>';
             $nb_produit += 1 * $quantite;
 
         }
     }
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+// BIDOUILLE POUR LE PROBLEME DE REFRESH DE LA LIST DES POINTS
+    if (!isset($_SESSION["bon_reduction"]))
+    {
+        $pourcentage = 0;
+        $message = '';
+        $code = '';
+        $disabled = '';
+        $formaction = '';
+        $value = "Valider";
+        $bon_montant = '';
+        $_SESSION["bon_reduction"] = 0;
+    }
+    if ($_SESSION["bon_reduction"] == 0)
+    {
+        $pourcentage = 0;
+        $message = '';
+        $code = '';
+        $disabled = '';
+        $formaction = '';
+        $value = "Valider";
+        $bon_montant = '';
+    }
+    else
+    {
+        $query = 'SELECT * FROM reduction WHERE id = ' . $_SESSION["bon_reduction"];
+        $res = mysqli_query($mysqli,$query);
+        $ligne = mysqli_fetch_assoc($res);
+
+        if (isset($ligne))
+        {
+            $code = htmlentities($ligne["code"]);
+            $pourcentage = htmlentities($ligne["pourcentage"]);
+            $message = "Vous avez droit à une réduction de " . $pourcentage . "% sur le montant total de votre commande";
+            $value = "Annuler";
+            $formaction = 'formaction=index.php?page=voirpanier&reduc=annul';
+            $disabled = 'disabled';
+            $bon_montant = '<input type="label" value="Réduction grâce à votre bon de réduction :"/>
+                              <input type="label" value="'. $pourcentage .'%"/><br />';
+        }
+    }
+
+    if (isset($_GET['reduc']))
+    {
+        $code = '';
+        $disabled = '';
+        $formaction = '';
+        $value = "Valider";
+        $_SESSION["bon_reduction"] = 0;
+        $bon_montant = '';
+    }
+
+    else if (isset($_POST["code_reduction"]))
+    {
+        $code = mysqli_real_escape_string($mysqli,$_POST["code_reduction"]);
+        $query = 'SELECT * FROM reduction WHERE code = "' . $code . '" ';
+        $res = mysqli_query($mysqli,$query);
+        $ligne = mysqli_fetch_assoc($res);
+
+        if (isset($ligne))
+        {
+            $_SESSION["bon_reduction"] = htmlentities($ligne["id"]);
+            $pourcentage = htmlentities($ligne["pourcentage"]);
+            $message = "Vous avez droit à une réduction de " . $pourcentage . "% sur le montant total de votre commande";
+            $value = "Annuler";
+            $formaction = 'formaction=index.php?page=voirpanier&reduc=annul';
+            $disabled = 'disabled';
+            $bon_montant = '<input type="label" value="Réduction grâce à votre bon de réduction :"/>
+                              <input type="label" value="'. $pourcentage .'%"/><br />';
+        }
+
+    }
+
+    $bon_reduction = '<h3>AJOUTER UN BON DE REDUCTION</h3>
+                      <input type="text" placeholder="Saisissez votre code de réduction" name="code_reduction" ' . $disabled . ' value="' . $code . '"/>
+                      <input type="submit" '. $formaction .' value="' . $value . '"/>
+                      <p>'. $message .'</p>';
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     if(  (isset($_SESSION['adminConnected']) && $_SESSION['adminConnected'] == true) || (isset($_SESSION['memberConnected']) && $_SESSION['memberConnected'] == true)  )
     {   
@@ -323,72 +380,51 @@ $bon_reduction = '<form action="index.php?page=voirpanier" method = "post">
         $ville = htmlentities($ligne['ville']);
         $nb_point = htmlentities($ligne['point']);
 
+        if ($mode == 'emporter')
+            $livraison_adresse = '';
+        else
+        {
         $livraison_adresse = '<div class="panier_adresse">
-                                <h3>ADRESSE DE LIVRAISON</h3>
-                                <p>Rue : ' . $adresse . '</p>
-                                <p>Code Postal: '. $cp . '</p>
-                                <p>Ville : ' .$ville . '</p>
+                                    <h3>ADRESSE DE LIVRAISON</h3>
+                                    <p>Rue : ' . $adresse . '</p>
+                                    <p>Code Postal: '. $cp . '</p>
+                                    <p>Ville : ' .$ville . '</p>
                               </div>
                               <div class="panier_adresse">
-                                  <form action="" method="post">
                                     <h3>AUTRE ADRESSE DE LIVRAISON</h3>
                                     <input type="text" value="" name="panier_adresse" placeholder="N° / Rue"/><br />
                                     <input type="text" value="" name="panier_cp" placeholder="Code Postal"/><br />
                                     <input type="text" value="" name="panier_ville" placeholder="Ville"/><br />
-                                    <input type="submit" value="Vérifier" />
-                                  </form>
                               </div>';
-        if (isset($_POST['mode']))
-            $mode = $_POST['mode'];
-
-        switch ($mode)
-        {
-            case 'livraison':
-                $check_livraison = 'checked';
-                $check_emporter = '';
-                $prix_total = $prix_total_livraison;
-                break;
-            case 'emporter':
-                $check_livraison = '';
-                $check_emporter = 'checked';
-                $prix_total = $prix_total_emporter;
-                $livraison_adresse = '';
-                break;
-            default:
-                $check_livraison = 'checked';
-                $check_emporter = '';
-                $prix_total = $prix_total_livraison;
-                break;
         }
-
-        if ($pourcentage != 0)
-        {
-            $prix_total -= $prix_total * ($pourcentage / 100);
-        }
-
-        $panier .= '<form>
-                        <input type="label" value="Nombre de produits"/>
-                        <input type="label" value="'. $nb_produit .'"/>
-                    </form>
-                    <form action="index.php?page=' . $_GET['page'] . '" method="post">
-                        <input type="label" value="TOTAL"/>
-                        <input type="label" value="'. $prix_total .' €"/>
-                        <p>
-                            <label>Livraison</label><input type="radio" value="livraison" name="mode" onclick="this.form.submit()" ' . $check_livraison . '>
-                            <label>A emporter</label><input type="radio" value="emporter" name="mode" onclick="this.form.submit()" ' . $check_emporter . '>
-                        </p>
-                    </form>';
-
 
         $message_point = '';
+        $point_montant = '';
         $nb_reduc = intval($nb_point / 10);
         if ($nb_reduc > 0)
-            $message_point = "Vous avez cumulez " . $nb_point . " points. Vous avec donc droit à ". $nb_reduc . " bons de reduction.";    
-        if ($nb_point > 0)
+            $message_point = "Vous avez cumulez " . $nb_point . " points. Vous avec droit à ". $nb_reduc . " bons de reduction.";
+        else if ($nb_point > 0)
             $message_point = "Vous avez cumulez " . $nb_point . " points. Vous n'avez pas encore assez de points pour avoir un bon de réduction.";
         else
             $message_point = "Vous n'avez cumulez aucun point.";
 
+        $i = 1;
+
+        if (isset($_POST['list_reduc']) && $_POST['list_reduc'] != 0)
+        {
+            $list_reduc = '<option value=' . $_POST['list_reduc'] . '>' . $_POST['list_reduc'] . '</option>';
+            $list_reduc .= '<option value=0>Nb de bons à utiliser</option>';
+            $point_montant = '<input type="label" value="Réduction grâce à vos points :"/>
+                              <input type="label" value="'. $_POST['list_reduc'] .' x -5€"/><br />';
+        }
+        else
+            $list_reduc = '<option value=0>Nb de bons à utiliser</option>';
+
+        while ($i <= $nb_reduc)
+        {
+            $list_reduc .= '<option value=' . $i . '>' . $i . '</option>';
+            $i++;
+        }
 
         $point =    "<h2>UTILISER MES POINT DE FIDELITE</h2>
                     <article class='point_article'>
@@ -401,20 +437,67 @@ $bon_reduction = '<form action="index.php?page=voirpanier" method = "post">
                         <p>Au bout de 10 points, un bon de réduction vous ait offert</p>
                     </article>
                     <article class='point_article'>
-                    <h3>3: J'UTILISE MES BONS DE REDUCTION QUAND JE VEUX</h3>
-                    <p>Les bons de réduction peuvent être et cumulés lors du paiement</p>
+                        <h3>3: J'UTILISE MES BONS DE REDUCTION QUAND JE VEUX</h3>
+                        <p>Les bons de réduction peuvent être et cumulés lors du paiement</p>
                     </article>
-                    <form action='index.php?page=voirpanier' method = 'post'  style='clear:both;'>
-                        <input type='text' placeholder='Saisissez votre code de réduction' name='code_reduction' value='" . $code . "'/>
-                        <input type='submit' value='Valider' />
+                    <article style='clear:both;'>
+                        <select size='1' name='list_reduc' onchange='this.form.submit()'>" . $list_reduc . "</select>
                         <p>" . $message_point . "</p>
-                    </form>";
+                    </article>;";
     }
     else
     {
-        $livraison_adresse = ''; 
         $point = '<p>Veuillez vous connecter afin de finaliser votre commande</p>'; 
     }
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    $montant = '';
+
+    if (isset($_POST['mode']))
+        $mode = $_POST['mode'];
+
+    switch ($mode)
+    {
+        case 'livraison':
+            $check_livraison = 'checked';
+            $check_emporter = '';
+            $prix_total = $prix_total_livraison;
+            break;
+        case 'emporter':
+            $check_livraison = '';
+            $check_emporter = 'checked';
+            $prix_total = $prix_total_emporter;
+            $livraison_adresse = '';
+            break;
+        default:
+            $check_livraison = 'checked';
+            $check_emporter = '';
+            $prix_total = $prix_total_livraison;
+            break;
+    }
+
+    if ($pourcentage != 0)
+    {
+        $prix_total -= $prix_total * ($pourcentage / 100);
+    }
+
+    $montant = '<input type="label" value="Nombre de produits"/>
+                     <input type="label" value="'. $nb_produit .'"/><br />
+                     <input type="label" value="TOTAL"/>
+                     <input type="label" value="'. $prix_total .' €"/><br />'
+                     . $point_montant . $bon_montant .
+                     '<p>
+                        <label>Livraison</label><input type="radio" value="livraison" name="mode" onclick="this.form.submit()" ' . $check_livraison . '>
+                        <label>A emporter</label><input type="radio" value="emporter" name="mode" onclick="this.form.submit()" ' . $check_emporter . '>
+                     </p>';
+
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

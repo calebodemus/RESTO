@@ -3,15 +3,13 @@
     <?=$panier?>
 </section>
 <section>
-    <?=$livraison_adresse?>
+    <form action='index.php?page=voirpanier' method = 'post'>
+        <?=$montant?>
+        <?=$livraison_adresse?>
+        <?=$point?>
+        <?=$bon_reduction?>
+        <button type"button"><a href="index.php?page=paiement">PAIEMENT</a></button>
+    </form>
 </section>
-<section>
-    <?=$point?>
-</section>
-<section>
-    <?=$bon_reduction?>
-</section>
-<section>
-	<button type"button"><a href="index.php?page=paiement">PAIEMENT</a></button>
-</section>
+
 
