@@ -1,0 +1,51 @@
+#compte>h1
+{
+	font-size:2rem;
+	color: orange;
+}
+
+
+#profilaff
+{
+background-color: black;
+width: 30%;
+}
+
+
+#profilaff>h2
+{
+	margin:0.7rem;
+	font-size:1.5rem;
+	color: orange;
+}
+
+#adresseaff
+{
+	margin: 1rem;
+}
+#adresseaff>h3
+{
+	margin:;
+	font-size: 1.3rem;
+	color: white;
+}
+#adresseaff>p
+{
+	color: white;
+}
+
+#infoaff
+{
+	margin: 1rem;
+}
+#infoaff>h3
+{
+	
+	font-size: 1.3rem;
+	color: white;
+}
+#infoaff>p
+{
+	color: white;
+}
+

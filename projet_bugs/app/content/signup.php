@@ -34,7 +34,8 @@ session_start();
 		$prenom = mysqli_real_escape_string($db, $prenom);
 
 		$pass = mysqli_real_escape_string($db, $pass1);
-		$hash = password_hash($pass, PASSWORD_BCRYPT, ["cost"=>13]);
+		
+		/*$hash = password_hash($pass, PASSWORD_BCRYPT, ["cost"=>13]);*/
 
 
 		$mail = mysqli_real_escape_string($db, $mail);
@@ -44,7 +45,7 @@ session_start();
 		$ville = mysqli_real_escape_string($db, $ville);
 		$societe = mysqli_real_escape_string($db, $societe);
 
-		$request = 'INSERT INTO user (login, prenom, nom, tel, adresse, cp, ville, mail, societe, pass, point, admin) VALUES("'.$login.'","'.$prenom.'","'.$nom.'","'.$tel.'","'.$adresse.'","'.$cp.'","'.$ville.'","'.$mail.'","'.$societe.'","'.$hash.'",0,0)';
+		$request = 'INSERT INTO user (login, prenom, nom, tel, adresse, cp, ville, mail, societe, pass, point, admin) VALUES("'.$login.'","'.$prenom.'","'.$nom.'","'.$tel.'","'.$adresse.'","'.$cp.'","'.$ville.'","'.$mail.'","'.$societe.'","'.$pass.'",0,0)';
 		mysqli_query($db, $request);
 
 		$id = mysqli_insert_id($db);
@@ -52,7 +53,7 @@ session_start();
 			$error = mysqli_error($db);
 		else
 			{
-			header('Location:index.php?page=login&registered=true');
+			header('Location:index.php?page=home');
 			return;
 
 			}

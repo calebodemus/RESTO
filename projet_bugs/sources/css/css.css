@@ -30,7 +30,7 @@ body
 
 a
 				{
-				cursor: default;
+				cursor: pointer;
 				color: currentcolor;
 				text-decoration: none;
 				}
@@ -217,8 +217,8 @@ input
 				color: #FFFFFF;
 				margin-top: 0.125em;
 				padding: 0.3em;
-				width: 14em;
 				margin: 0.0625em;
+				text-align: center;
 				}
 
 input .inpname
@@ -297,11 +297,29 @@ input .inpbtn:hover
 				color: rgba(256, 0, 0, 1);
 				}
 
+.bntLog
+				{
+				width: 50%;
+				max-width: 4.5em;
+				float: left;
+				}
 
+.LogOut
+				{
+				position: relative;
+				}
 
+.LogIn
+				{
+				position: relative;
+				}
 
-
-
+p.alertmsg
+				{
+				color: rgba(220, 220, 220 ,1);
+				position: relative;
+				top: -2em;
+				}
 
 
 
