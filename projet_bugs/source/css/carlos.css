@@ -1,0 +1,35 @@
+#carte_nav{
+	background:black;
+}
+
+#carte_nav_list{
+	width:100%;
+}
+#carte_nav_list>li{
+	float:left;
+	width:20%;
+}
+#carte_nav_list>li>a{
+	display:block;
+	height:2rem;	
+	text-align: center;
+	padding-top: 0.5rem;
+	background:grey;
+	color:white;	
+}
+#carte_article{
+	float:left;
+	width:70%;
+}
+#carte_panier{
+	float:left;
+	width:30%;
+	padding-top: 0.5rem;
+	text-align: center;	
+}
+#footer{
+	clear:both;
+}
+a {
+	text-decoration: none;
+}

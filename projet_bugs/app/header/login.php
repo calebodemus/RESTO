@@ -34,7 +34,8 @@ else if(isset($_POST['login'], $_POST['pass']))
                                 $_SESSION['loginid'] = $ligneverif['id'];
                                  
 
-
+                                        /*| N'y aurait-il pas une meilleure facon de faire ? :) |*/
+                                        /*| On utilise deux boolean pour savoir si on est admin ou pas... |*/
                                         if($admin==1)
                                         {
                                             $_SESSION['adminConnected'] = true;

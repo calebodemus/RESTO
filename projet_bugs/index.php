@@ -3,8 +3,13 @@ session_start();
 header("Content-Type: text/html; charset=utf-8");
 require('app/server.php');
 $page = "home"; 
+<<<<<<< HEAD
 $mysqli = mysqli_connect("localhost", "root","troiswa", "bugs"); 
 
+=======
+$mysqli = mysqli_connect("localhost", "root", "troiswa", "bugs"); 
+/*| Il faut vérifier si la connection mysql a reussi ! |*/
+>>>>>>> e53a545b6cd9aa70be16dfc00687d26a5eaa923e
 
 $tab = array("home" => "content/home",
 			  "carte"=>"content/carte",
@@ -34,7 +39,7 @@ $tab = array("home" => "content/home",
 	header('location:index.php?page=home');
 	}
     
-require("app/skel.php");
+ require("app/skel.php");
 
 
 
