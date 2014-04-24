@@ -4,7 +4,7 @@ $erreurlogin = '';
 
 if(  (isset($_SESSION['adminConnected']) && $_SESSION['adminConnected'] == true) || (isset($_SESSION['memberConnected']) && $_SESSION['memberConnected'] == true)  )
 {
-    require('views/logged.html');
+    require('views/header/logged.html');
 }
 
 else if(isset($_POST['login'], $_POST['pass']))
@@ -19,7 +19,7 @@ else if(isset($_POST['login'], $_POST['pass']))
 
 
                     
-                    $verif= "SELECT `login`, `id`, `admin`, `pass` FROM bloeg.user WHERE  `login` = '".$login."' AND `pass` = '".$pass."' ";
+                    $verif= "SELECT `login`, `id`, `admin`, `pass` FROM bugs.user WHERE  `login` = '".$login."' AND `pass` = '".$pass."' ";
 
                     $verifsql= mysqli_query($mysqli, $verif);
                     $ligneverif = mysqli_fetch_assoc($verifsql);
