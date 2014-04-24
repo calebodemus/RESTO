@@ -5,12 +5,8 @@ require('app/server.php');
 $page = "home"; 
 
 $mysqli = mysqli_connect("localhost", "root","troiswa", "bugs"); 
-<<<<<<< HEAD
-=======
 /*| Il faut vérifier si la connection mysql a reussi ! |*/
 
-
->>>>>>> e1b076ea670377c284e0107525eb501c31f44922
 
 $tab = array("home" => "content/home",
 			  "carte"=>"content/carte",
