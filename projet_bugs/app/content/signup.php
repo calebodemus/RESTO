@@ -15,7 +15,7 @@ $cp = $_POST['cp'];
 $ville = $_POST['ville'];
 $societe = $_POST['societe'];
 
-session_start();
+
 
 	if (strlen($login) < 3)
 		$error = "Login is too short, must be at least 3 characters long.";

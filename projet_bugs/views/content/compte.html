@@ -2,7 +2,7 @@
 <div id="compte">
 
 	<h1>Mon compte</h1>
-<h1><?php echo $messagecompte ?></h1>
+
 		<div id="profilaff">
 
 			<h2>Mon profil</h2>
@@ -15,6 +15,10 @@
 							<p>
 								<?= $prenom." ". $nom."<br/>". $adresse."<br/>". $codepostal." ". $ville  ?>
 							</p>
+
+							<button>
+								<a href="index.php?page=compte&modif=true">modifier mon adresse de livraison</a>
+							</button>	
 
 						</div>
 

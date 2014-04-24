@@ -17,7 +17,8 @@ $tab = array("home" => "content/home",
 			  "reservation"=>"content/reservation",
 			  "voirpanier"=>"content/voirpanier",
 			  "livre"=>"content/livre",
-			  "logout"=>"logout");
+			  "logout"=>"logout",
+				"comptemodif"=>"content/comptemodif");
 
 	if(isset($_GET['page']))
 	{
