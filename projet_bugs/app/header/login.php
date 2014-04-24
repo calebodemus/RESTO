@@ -63,6 +63,7 @@ else
 
 $_SESSION['adminConnected'] = false;
 $_SESSION['memberConnected'] = false;
+$_SESSION['loginid'] = 404;
 $erreurlogin = 'connectez vous :';
 require('views/header/login.html');
 }
