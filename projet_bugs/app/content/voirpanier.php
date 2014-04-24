@@ -204,26 +204,6 @@ $bon_reduction = '<form action="index.php?page=voirpanier" method = "post">
                     <p>'. $message .'</p>
                   </form>';
 
-
-
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-$nb_point = 0;
-/*
-$point = '<form action="index.php?page=voirpanier" method = "post">
-            <h3>UTILISER MES POINTS DE REDUCTION</h3>
-            <input type="text" placeholder="Saisissez votre code de réduction" name="code_reduction" value="' . $code . '"/>
-            <input type="submit" value="Valider" />
-            <p>'. $message .'</p>
-          </form>';*/
-
-
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -329,54 +309,64 @@ $point = '<form action="index.php?page=voirpanier" method = "post">
         }
     }
 
-    $query = "SELECT * FROM user WHERE login = 'mojho'";
-    $res = mysqli_query($mysqli,$query);
-    $ligne = mysqli_fetch_assoc($res);
 
-    $adresse = htmlentities($ligne['adresse']);
-    $cp = htmlentities($ligne['cp']);
-    $ville = htmlentities($ligne['ville']);
+    if(  (isset($_SESSION['adminConnected']) && $_SESSION['adminConnected'] == true) || (isset($_SESSION['memberConnected']) && $_SESSION['memberConnected'] == true)  )
+    {   
+        $login = mysqli_real_escape_string($mysqli,$_SESSION['login']);
 
-    $livraison_adresse = '<div>
-                            <p>Rue : ' . $adresse . '</p>
-                            <p>Code Postal: '. $cp . '</p>
-                            <p>Ville : ' .$ville . '</p>
-                          </div>
-                          <form action="" method="post">
-                            <input type="text" value="" name="panier_adresse" placeholder="N° / Rue"/><br />
-                            <input type="text" value="" name="panier_cp" placeholder="Code Postal"/>
-                            <input type="text" value="" name="panier_ville" placeholder="Ville"/>
-                            <input type="submit" value="Enregistrer" />
-                          </form>';
-    if (isset($_POST['mode']))
-        $mode = $_POST['mode'];
+        $query = "SELECT * FROM user WHERE login = '". $login . "'";
+        $res = mysqli_query($mysqli,$query);
+        $ligne = mysqli_fetch_assoc($res);
 
-    switch ($mode)
-    {
-        case 'livraison':
-            $check_livraison = 'checked';
-            $check_emporter = '';
-            $prix_total = $prix_total_livraison;
-            break;
-        case 'emporter':
-            $check_livraison = '';
-            $check_emporter = 'checked';
-            $prix_total = $prix_total_emporter;
-            $livraison_adresse = '';
-            break;
-        default:
-            $check_livraison = 'checked';
-            $check_emporter = '';
-            $prix_total = $prix_total_livraison;
-            break;
-    }
+        $adresse = htmlentities($ligne['adresse']);
+        $cp = htmlentities($ligne['cp']);
+        $ville = htmlentities($ligne['ville']);
+        $nb_point = htmlentities($ligne['point']);
 
-    if ($pourcentage != 0)
-    {
-        $prix_total -= $prix_total * ($pourcentage / 100);
-    }
+        $livraison_adresse = '<div class="panier_adresse">
+                                <h3>ADRESSE DE LIVRAISON</h3>
+                                <p>Rue : ' . $adresse . '</p>
+                                <p>Code Postal: '. $cp . '</p>
+                                <p>Ville : ' .$ville . '</p>
+                              </div>
+                              <div class="panier_adresse">
+                                  <form action="" method="post">
+                                    <h3>AUTRE ADRESSE DE LIVRAISON</h3>
+                                    <input type="text" value="" name="panier_adresse" placeholder="N° / Rue"/><br />
+                                    <input type="text" value="" name="panier_cp" placeholder="Code Postal"/><br />
+                                    <input type="text" value="" name="panier_ville" placeholder="Ville"/><br />
+                                    <input type="submit" value="Vérifier" />
+                                  </form>
+                              </div>';
+        if (isset($_POST['mode']))
+            $mode = $_POST['mode'];
 
-    $panier .= '<form>
+        switch ($mode)
+        {
+            case 'livraison':
+                $check_livraison = 'checked';
+                $check_emporter = '';
+                $prix_total = $prix_total_livraison;
+                break;
+            case 'emporter':
+                $check_livraison = '';
+                $check_emporter = 'checked';
+                $prix_total = $prix_total_emporter;
+                $livraison_adresse = '';
+                break;
+            default:
+                $check_livraison = 'checked';
+                $check_emporter = '';
+                $prix_total = $prix_total_livraison;
+                break;
+        }
+
+        if ($pourcentage != 0)
+        {
+            $prix_total -= $prix_total * ($pourcentage / 100);
+        }
+
+        $panier .= '<form>
                         <input type="label" value="Nombre de produits"/>
                         <input type="label" value="'. $nb_produit .'"/>
                     </form>
@@ -389,14 +379,50 @@ $point = '<form action="index.php?page=voirpanier" method = "post">
                         </p>
                     </form>';
 
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+        $message_point = '';
+        $nb_reduc = intval($nb_point / 10);
+        if ($nb_reduc > 0)
+            $message_point = "Vous avez cumulez " . $nb_point . " points. Vous avec donc droit à ". $nb_reduc . " bons de reduction.";    
+        if ($nb_point > 0)
+            $message_point = "Vous avez cumulez " . $nb_point . " points. Vous n'avez pas encore assez de points pour avoir un bon de réduction.";
+        else
+            $message_point = "Vous n'avez cumulez aucun point.";
+
+
+        $point =    "<h2>UTILISER MES POINT DE FIDELITE</h2>
+                    <article class='point_article'>
+                        <h3>1: JE CUMULE DES POINTS DE FIDELITE</h3>
+                        <p>1 commande = 1 point cumulé</p>
+                    </article>
+                    <article class='point_article'>
+                        <h3>2: J'ECHANGE MES POINTS EN BONS DE REDUCTION</h3>
+                        <p>Dans votre espace 'Mon Compte', vous pouvez visualiser le total de vos points.</p>
+                        <p>Au bout de 10 points, un bon de réduction vous ait offert</p>
+                    </article>
+                    <article class='point_article'>
+                    <h3>3: J'UTILISE MES BONS DE REDUCTION QUAND JE VEUX</h3>
+                    <p>Les bons de réduction peuvent être et cumulés lors du paiement</p>
+                    </article>
+                    <form action='index.php?page=voirpanier' method = 'post'  style='clear:both;'>
+                        <input type='text' placeholder='Saisissez votre code de réduction' name='code_reduction' value='" . $code . "'/>
+                        <input type='submit' value='Valider' />
+                        <p>" . $message_point . "</p>
+                    </form>";
+    }
+    else
+    {
+        $livraison_adresse = ''; 
+        $point = '<p>Veuillez vous connecter afin de finaliser votre commande</p>'; 
+    }
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
     require('views/content/voirpanier.html');

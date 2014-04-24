@@ -33,3 +33,12 @@
 a {
 	text-decoration: none;
 }
+.point_article{
+	float:left;
+	width:30%;
+	margin-left: 3%;
+}
+.panier_adresse{
+	float:left;
+	width:50%;
+}
