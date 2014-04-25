@@ -124,15 +124,15 @@
         {
             case 'entree':
                 $name = 'ME' . $menu_id;
-                $entree .= '<input type="radio" value="' . $carte_id . '" name="'. $name .'" ' . $check_menu . ' /><label>' . $carte_lib . '</label><br />';
+                $entree .= '<input class="radio" type="radio" value=""' . $carte_id . '" name="'. $name .'" ' . $check_menu . ' /><label>' . $carte_lib . '</label><br />';
                 break;
             case 'plat':
                 $name = 'MP' . $menu_id;
-                $plat .= '<input type="radio" value="' . $carte_id . '" name="'. $name .'" ' . $check_menu . ' /><label>' . $carte_lib . '</label><br />';
+                $plat .= '<input class="radio" type="radio" value=""' . $carte_id . '" name="'. $name .'" ' . $check_menu . ' /><label>' . $carte_lib . '</label><br />';
                 break;
             case 'dessert':
                 $name = 'MD' . $menu_id;
-                $dessert .= '<input type="radio" value="' . $carte_id . '" name="'. $name .'" ' . $check_menu . ' /><label>' . $carte_lib . '</label><br />';
+                $dessert .= '<input class="radio" type="radio" value=""' . $carte_id . '" name="'. $name .'" ' . $check_menu . ' /><label>' . $carte_lib . '</label><br />';
                 break;
         }
     }
