@@ -1,23 +1,26 @@
 
 <div id="compte">
 
+
 	<h1>Mon compte</h1>
 
 		<div id="profilaff">
+		
+		<h1>  </h1>
 
 			<h2>Mon profil</h2>
 
 			
 
 						<div id="adresseaff">
-							<h3>Mon adresse de livraison :</h3>
+							<h3>Mes coordonnées:</h3>
 
 							<p>
-								<?= $prenom." ". $nom."<br/>". $adresse."<br/>". $codepostal." ". $ville  ?>
+								<?= $prenom." ". $nom."<br/>". $adresse."<br/>". $codepostal." ". $ville ."<br/> Societe :".$societé."<br/><br/> tel :".$tel."<br/> email :".$email  ?>
 							</p>
 
 							<button>
-								<a href="index.php?page=compte&modif=true">modifier mon adresse de livraison</a>
+								<a href="index.php?page=compte&modif=true">modifier mes coordonnées</a>
 							</button>	
 
 						</div>
