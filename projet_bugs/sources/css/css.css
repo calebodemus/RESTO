@@ -6,28 +6,6 @@
 				/*outline: 1px dotted rgba(255, 0, 0, 0.3);*/
 				}
 
-html
-				{
-				font-family: 'Sniglet', cursive;
-				}
-
-body
-				{
-				background-color: rgba(33, 66, 99, 1);
-				background-image: url("../img/pw_maze_black.png");
-				}
-
-.main
-				{
-				background-color: rgba(33, 66, 99, 0.3);
-				position: relative;
-				top: 0;
-				bottom: 0;
-				min-height: 50%;
-				height: 50em;
-
-				}
-
 a
 				{
 				cursor: pointer;
@@ -40,98 +18,21 @@ a:hover
 				
 				}
 
-.row
+#adresseaff
 				{
-
+				margin: 1rem;
 				}
 
-header
+#adresseaff>h3
 				{
-				height: 7.5em;
+				margin:;
+				font-size: 1.3rem;
+				color: white;
 				}
 
-img
+#adresseaff>p
 				{
-
-				}
-
-.K_line
-				{
-				max-width: 960px;
-				width: 100%;
-				margin: 0 auto;
-				border-top: 0px solid rgba(20, 20, 20, 1);
-				}
-
-nav
-				{
-				line-height: 1em;
-				height: 3em;
-				max-width: 17em;
-				width: 25%;
-				clear: both;
-				}
-
-nav ul
-				{
-				left: 3em;
-				}
-
-nav ul li:before
-				{
-				content: "|";
-				}
-
-nav ul li
-				{
-				display: inline;
-				line-height: 2.5em;
-				}
-
-h1
-				{
-				color: rgba(255, 255, 255, 1);
-				font-family: 'Lilita One', cursive;
-				font-size: 4em;
-				text-align: center;
-				line-height: 2em;
-				}
-
-footer
-				{
-
-				}
-
-.fixT
-				{
-				position: fixed;
-				left: 0;
-				right: 0;
-				top: 0;
-				}
-
-.fixB
-				{
-				position: fixed;
-				left: 0;
-				right: 0;
-				bottom: 0;
-				}
-
-.InpUseName
-				{
-
-				}
-
-.InpPassUse
-				{
-
-				}
-
-
-.InpSubValid
-				{
-
+				color: white;
 				}
 
 .BgCol00
@@ -159,6 +60,376 @@ footer
 				background-color: rgba(49, 55, 61, 1);
 				}
 
+.bntLog
+				{
+				width: 50%;
+				max-width: 4.5em;
+				}-width: 4.5em;
+				}
+
+body
+				{
+				background-color: rgba(33, 66, 99, 1);
+				background-image: url("../img/pw_maze_black.png");
+				}
+
+.CarteMenu
+				{
+				width: 100%;
+				float: left;
+				}
+
+#carte_content>article
+				{
+				width: 50%;
+				float: right;
+				padding: 0.3em 0.6em;
+				overflow: hidden;
+				}
+
+#carte_content p
+				{
+				font-size: .7em;
+				line-height: 1.2em;
+				text-align: justify;
+				}
+
+#carte_content article img
+				{
+				width: 100%;
+				}
+
+#carte_nav
+				{
+				background:black;
+				}
+
+#carte_nav_list
+				{
+				width:100%;
+				list-style: none;
+				}
+
+#carte_nav_list>li
+				{
+				float:left;
+				width:20%;
+				}
+
+#carte_nav_list>li>a
+				{
+				display:block;
+				height:2rem;
+				text-align: center;
+				padding-top: 0.5rem;
+				background:grey;
+				color:white;
+				}
+
+#carte_article
+				{
+				float:left;
+				width:66.6666%;
+				}
+
+#carte_panier
+				{
+				float:left;
+				width:33.3333%;
+				padding-top: 0.5rem;
+				text-align: center;
+				background-color: rgba(128, 128, 128, 0.5);
+				}
+
+#compte>h1
+				{
+				font-size:2rem;
+				color: orange;
+				}
+
+#container
+				{
+				width: 14em;
+				}
+
+#container label
+				{
+				color: rgba(220, 220, 220, 1);
+				float: left;
+				line-height: 1em;
+				margin-right: 0.3em;
+				margin-top: 0.3em;
+				text-align: right;
+				width: 14em;
+				}
+
+.fixT
+				{
+				position: fixed;
+				left: 0;
+				right: 0;
+				top: 0;
+				}
+
+.fixB
+				{
+				position: fixed;
+				left: 0;
+				right: 0;
+				bottom: 0;
+				}
+
+.FlL
+				{
+				float: left;
+				}
+
+.FlR
+				{
+				float: right;
+				}
+
+.FormInscr
+				{
+				width: 28em;
+				margin-left: 1em
+				}
+
+.foot
+				{
+				font-family: 'Signika',sans-serif;
+				font-size: 0.7em;
+				padding: 0.3em 0;
+				text-align: center;
+				}
+
+#footer
+				{
+				clear:both;
+				}
+
+
+
+header
+				{
+				height: 7.5em;
+				}
+
+h1
+				{
+				color: rgba(255, 255, 255, 1);
+				font-family: 'Lilita One', cursive;
+				font-size: 4em;
+				text-align: center;
+				line-height: 2em;
+				}
+
+.HomeSlider
+				{
+				width: 100%;
+				height: 10em;
+				background-color: orange;
+				background-image: url("../img/Food10.jpg");
+				}
+
+html
+				{
+				font-family: 'Sniglet', cursive;
+				}
+
+#infoaff
+				{
+				margin: 1rem;
+				}
+
+#infoaff>h3
+				{
+				font-size: 1.3rem;
+				color: white;
+				}
+
+#infoaff>p
+				{
+				color: white;
+				}
+
+.indication
+				{
+				color: rgba(255, 255, 255, 1);
+				font-size: 0.8em;
+				line-height: 1.7em;
+				margin-right: 1em;
+				text-align: right;
+				}
+
+.inlogin
+				{
+				position: relative;
+				top: -8.5em;
+				width: 230px;
+				}
+
+input
+				{
+				background-color: rgba(255, 255, 255, 0.2);
+				border: medium none;
+				color: #FFFFFF;
+				margin-top: 0.125em;
+				padding: 0.3em;
+				margin: 0.0625em;
+				text-align: center;
+				max-width: 15em;
+				}
+
+input .inpname
+				{
+
+				}
+
+input .inppass
+				{
+
+				}
+
+input .inpbtn
+				{
+				border-radius: 0.125em;
+				margin-right:6px;
+				width: 5em;
+				}
+
+input .inpbtn:hover
+				{
+				background-color: rgba(255, 255, 255, 0.16);
+				}
+
+input.radio
+				{
+				border: none;
+				background-color: red
+				}
+
+
+
+.InpUseName
+				{
+
+				}
+
+.InpPassUse
+				{
+
+				}
+
+
+.InpSubValid
+				{
+
+				}
+
+.K_line
+				{
+				max-width: 960px;
+				width: 100%;
+				margin: 0 auto;
+				border-top: 0px solid rgba(20, 20, 20, 1);
+				}
+
+.LogOut
+				{
+				position: relative;
+				}
+
+.LogIn
+				{
+				position: relative;
+				}
+
+.main
+				{
+				background-color: rgba(33, 66, 99, 0.3);
+				position: relative;
+				top: 0;
+				bottom: 0;
+				min-height: 50%;
+				height: 50em;
+
+				}
+
+.message
+				{
+				color: rgba(255, 0, 0, 1);
+				}
+
+nav
+				{
+				line-height: 1em;
+				height: 3em;
+				max-width: 17em;
+				width: 25%;
+				clear: both;
+				}
+
+nav ul
+				{
+				left: 3em;
+				}
+
+nav ul li:before
+				{
+				content: "|";
+				}
+
+nav ul li
+				{
+				display: inline;
+				line-height: 2.5em;
+				}
+
+p.alertmsg
+				{
+				color: rgba(220, 220, 220 ,1);
+				position: relative;
+				top: -2em;
+				}
+
+.point_article
+				{
+				float:left;
+				width:30%;
+				margin-left: 3%;
+				}
+
+.panier_adresse
+				{
+				float:left;
+				width:50%;
+				}
+
+#profilaff
+				{
+				background-color: black;
+				width: 30%;
+				}
+
+
+#profilaff>h2
+				{
+				margin:0.7rem;
+				font-size:1.5rem;
+				color: orange;
+				}
+
+.required
+				{
+				color: rgba(256, 0, 0, 1);
+				}
+
+.row
+				{
+
+				}
+
 .TxtCol00
 				{
 				color: rgba(255, 255, 255, 1);
@@ -184,65 +455,6 @@ footer
 				color: rgba(255, 255, 238, 1);
 				}
 
-.FlL
-				{
-				float: left;
-				}
-
-.FlR
-				{
-				float: right;
-				}
-
-
-.foot
-				{
-				font-family: 'Signika',sans-serif;
-				font-size: 0.7em;
-				padding: 0.3em 0;
-				text-align: center;
-				}
-
-.inlogin
-				{
-				position: relative;
-				top: -8.5em;
-				width: 230px;
-				}
-
-input
-				{
-				background-color: rgba(255, 255, 255, 0.2);
-				border: medium none;
-				color: #FFFFFF;
-				margin-top: 0.125em;
-				padding: 0.3em;
-				margin: 0.0625em;
-				text-align: center;
-				}
-
-input .inpname
-				{
-
-				}
-
-input .inppass
-				{
-
-				}
-
-input .inpbtn
-				{
-				border-radius: 0.125em;
-				margin-right:6px;
-				width: 5em;
-				}
-
-input .inpbtn:hover
-				{
-				background-color: rgba(255, 255, 255, 0.16);
-				}
-
 .txterror
 				{
 				color: rgba(120, 120, 120, 1);
@@ -251,75 +463,6 @@ input .inpbtn:hover
 				top: -1.9em;
 				}
 
-.HomeSlider
-				{
-				width: ;
-				height: ;
-				max-width: ;
-				max-height: ;
-				background-color: rgba(255, 200, 158, 1);
-				color: rgba(128, 128, 128, 1);
-				}
-
-#container
-				{
-				width: 14em;
-				}
-
-#container label
-				{
-				color: rgba(220, 220, 220, 1);
-				float: left;
-				line-height: 1em;
-				margin-right: 0.3em;
-				margin-top: 0.3em;
-				text-align: right;
-				width: 14em;
-				}
-
-.FormInscr
-				{
-				width: 28em;
-				margin-left: 1em
-				}
-
-.indication
-				{
-				color: rgba(255, 255, 255, 1);
-				font-size: 0.8em;
-				line-height: 1.7em;
-				margin-right: 1em;
-				text-align: right;
-				}
-
-.required
-				{
-				color: rgba(256, 0, 0, 1);
-				}
-
-.bntLog
-				{
-				width: 50%;
-				max-width: 4.5em;
-				float: left;
-				}
-
-.LogOut
-				{
-				position: relative;
-				}
-
-.LogIn
-				{
-				position: relative;
-				}
-
-p.alertmsg
-				{
-				color: rgba(220, 220, 220 ,1);
-				position: relative;
-				top: -2em;
-				}
 
 
 
