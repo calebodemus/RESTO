@@ -4,7 +4,7 @@ header("Content-Type: text/html; charset=utf-8");
 require('app/server.php');
 $page = "home"; 
 
-$mysqli = mysqli_connect("localhost", "root","troiswa", "bugs"); 
+$mysqli = mysqli_connect("localhost", "root","", "bugs"); 
 /*| Il faut vérifier si la connection mysql a reussi ! |*/
 
 
