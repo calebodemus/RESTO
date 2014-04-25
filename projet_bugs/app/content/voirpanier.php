@@ -505,7 +505,7 @@ if (isset($_GET['action']))
         $prix_total_reduc -= $prix_total_reduc * ($pourcentage / 100);
     }
 
-    $_SESSION['monant_payer'] = $prix_total_reduc;
+    $_SESSION['montant_payer'] = $prix_total_reduc;
 
     if ($nb_bon != 0 || $pourcentage != 0)
     {
