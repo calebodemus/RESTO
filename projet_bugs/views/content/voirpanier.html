@@ -3,13 +3,12 @@
     <?=$panier?>
 </section>
 <section>
-    <form action='index.php?page=voirpanier' method = 'post'>
+    <form action='index.php?page=voirpanier' method='post'>
         <?=$montant?>
         <?=$livraison_adresse?>
         <?=$point?>
         <?=$bon_reduction?>
-        <button type"button"><a href="index.php?page=paiement">PAIEMENT</a></button>
-    </form>
+        <input type="submit" formaction="index.php?page=paiement" value="PAIEMENT"/>
 </section>
 
 

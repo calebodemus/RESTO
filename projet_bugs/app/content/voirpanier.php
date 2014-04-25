@@ -367,6 +367,11 @@ if (isset($_GET['action']))
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+    $livraison_adresse = '';
+    $point_montant = '';
+    $message_point = '';
+    $nb_bon = 0;
+
     if(  (isset($_SESSION['adminConnected']) && $_SESSION['adminConnected'] == true) || (isset($_SESSION['memberConnected']) && $_SESSION['memberConnected'] == true)  )
     {   
         $login = mysqli_real_escape_string($mysqli,$_SESSION['login']);
@@ -398,8 +403,7 @@ if (isset($_GET['action']))
                               </div>';
         }
 
-        $message_point = '';
-        $point_montant = '';
+
         $nb_reduc = intval($nb_point / 10);
         if ($nb_reduc > 0)
             $message_point = "Vous avez cumulez " . $nb_point . " points. Vous avec droit à ". $nb_reduc . " bons de reduction.";
@@ -412,13 +416,17 @@ if (isset($_GET['action']))
 
         if (isset($_POST['list_reduc']) && $_POST['list_reduc'] != 0)
         {
+            $nb_bon = $_POST['list_reduc'];
             $list_reduc = '<option value=' . $_POST['list_reduc'] . '>' . $_POST['list_reduc'] . '</option>';
             $list_reduc .= '<option value=0>Nb de bons à utiliser</option>';
             $point_montant = '<input type="label" value="Réduction grâce à vos points :"/>
-                              <input type="label" value="'. $_POST['list_reduc'] .' x -5€"/><br />';
+                              <input type="label" value="'. $nb_bon .' x -5€"/><br />';
         }
         else
-            $list_reduc = '<option value=0>Nb de bons à utiliser</option>';
+            if ($nb_point == 0)
+                $list_reduc = '<option value=0>Aucun bon</option>';
+            else
+                $list_reduc = '<option value=0>Nb de bons à utiliser</option>';
 
         while ($i <= $nb_reduc)
         {
@@ -459,6 +467,7 @@ if (isset($_GET['action']))
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     $montant = '';
+    $payer_montant = '';
 
     if (isset($_POST['mode']))
         $mode = $_POST['mode'];
@@ -483,16 +492,29 @@ if (isset($_GET['action']))
             break;
     }
 
+    $prix_total_reduc = $prix_total;
+
+    if ($nb_bon != 0)
+    {
+        $prix_total_reduc = $prix_total - ($nb_bon * 5);    
+    }
+
     if ($pourcentage != 0)
     {
-        $prix_total -= $prix_total * ($pourcentage / 100);
+        $prix_total_reduc -= $prix_total_reduc * ($pourcentage / 100);
+    }
+
+    if ($nb_bon != 0 || $pourcentage != 0)
+    {
+        $payer_montant = '<input type="label" value="TOTAL à payer"/>
+                              <input type="label" value="'. $prix_total_reduc .' €"/><br />';
     }
 
     $montant = '<input type="label" value="Nombre de produits"/>
                      <input type="label" value="'. $nb_produit .'"/><br />
                      <input type="label" value="TOTAL"/>
                      <input type="label" value="'. $prix_total .' €"/><br />'
-                     . $point_montant . $bon_montant .
+                     . $point_montant . $bon_montant . $payer_montant .
                      '<p>
                         <label>Livraison</label><input type="radio" value="livraison" name="mode" onclick="this.form.submit()" ' . $check_livraison . '>
                         <label>A emporter</label><input type="radio" value="emporter" name="mode" onclick="this.form.submit()" ' . $check_emporter . '>
