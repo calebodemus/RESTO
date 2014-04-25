@@ -7,8 +7,8 @@
     $prix_total_emporter = 0;
     $prix = 0;
     $prix_total = 0;
-    $mode = '';
     $composition = '';
+    $mode = '';
 
     if (isset($_SESSION['carte']))
     {
@@ -26,10 +26,10 @@
 
             if (isset($_POST['mode']))
                 $mode = $_POST['mode'];
-            if ($mode == 'livraison')
-                $prix = $ligne['prix_livraison'] * $value;
-            else
+            if ($mode == 'emporter')
                 $prix = $ligne['prix_emporter'] *  $value;
+            else
+                $prix = $ligne['prix_livraison'] * $value;
 
             $panier .= '<form action="index.php?page=' . $_GET['page'] . '&cart=' . $cart . '&action=*&id=' . $key . '" method="post">
                             <a href="index.php?page=' . $_GET['page'] . '&cart=' . $cart . '&action=d&id=' . $key . '" class="panier_delete"><img src="source/img/remove.png" alt="delete"/></a>
@@ -62,10 +62,10 @@
 
             if (isset($_POST['mode']))
                 $mode = $_POST['mode'];
-            if ($mode == 'livraison')
-                $prix = $ligne['prix_livraison'] * $quantite;
-            else
+            if ($mode == 'emporter')
                 $prix = $ligne['prix_emporter'] *  $quantite;
+            else
+                $prix = $ligne['prix_livraison'] * $quantite;
 
             $list = '(' . $tab_panier_menu['id_entree'] . ',' . $tab_panier_menu['id_plat'] . ',' . $tab_panier_menu['id_dessert'] . ',' . $tab_panier_menu['id_boisson'] . ')';
             $query = 'SELECT * FROM carte WHERE id in ' . $list;
