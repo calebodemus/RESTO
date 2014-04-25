@@ -1,1 +1,24 @@
-<h1>paiement</h1>
+<section>
+	<h1>paiement</h1>
+	<form action='index.php?page=paiement' method='post'>
+		<label for="montant">Montant à payer:</label>
+		<input type="text" value="<?=$montant_payer?>" name="montant" /><br />
+		<label>Visa:</label>
+		<input type="radio" value="Visa" name="methode"><br />
+		<label>Visa Electron:</label>
+	    <input type="radio" value="Visa Electron" name="methode"><br />
+	    <label>Mastercard:</label>
+	    <input type="radio" value="Mastercard" name="methode"><br />
+	    <label>Maestro:</label>
+	    <input type="radio" value="Maestro" name="methode"><br />
+	    <label for="num_carte">Numéro de carte:</label>
+	    <input type="text" value="<?=$num_carte?>" name="num_carte" /><br />
+	    <label for="titulaire">Nom du titulaire de la carte:</label>
+	    <input type="text" value="<?=$titulaire?>" name="titulaire" /><br />    
+	    <label for="montant">Date d'expiration carte:</label>
+	    <input type="text" value="<?=$date_exp?>" name="montant" placeholder="mm/aa"/><br />
+	    <label for="cryptogramme">Cryptogramme:</label>
+	    <input type="text" value="<?=$cryptogramme?>" name="cryptogramme" /><br />
+	    <input type="submit" value="Acheter" />
+	</form>
+</section>
