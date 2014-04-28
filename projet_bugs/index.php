@@ -9,16 +9,16 @@ $mysqli = mysqli_connect("localhost", "root","troiswa", "bugs");
 
 
 $tab = array("home" => "content/home",
-			  "carte"=>"content/carte",
-			  "compte"=>"content/compte",
-			  "coord" =>"content/coord",
-			  "paiement"=>"content/paiement",
-			  "signup"=>"content/signup",
-			  "reservation"=>"content/reservation",
-			  "voirpanier"=>"content/voirpanier",
-			  "livre"=>"content/livre",
-			  "logout"=>"logout",
-				"comptemodif"=>"content/comptemodif");
+			 "carte"=>"content/carte",
+			 "compte"=>"content/compte",
+			 "coord" =>"content/coord",
+			 "paiement"=>"content/paiement",
+			 "signup"=>"content/signup",
+			 "reservation"=>"content/reservation",
+			 "voirpanier"=>"content/voirpanier",
+			 "livre"=>"content/livre",
+			 "logout"=>"logout",
+			 "comptemodif"=>"content/comptemodif");
 
 	if(isset($_GET['page']))
 	{
@@ -36,7 +36,7 @@ $tab = array("home" => "content/home",
 	{
 	header('location:index.php?page=home');
 	}
-    
+
  require("app/skel.php");
 
 

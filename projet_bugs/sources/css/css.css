@@ -11,6 +11,7 @@ a
 				cursor: pointer;
 				color: currentcolor;
 				text-decoration: none;
+				font-family: 'Open Sans', 'sans-serif';
 				}
 
 a:hover
@@ -64,13 +65,44 @@ a:hover
 				{
 				width: 50%;
 				max-width: 4.5em;
-				}-width: 4.5em;
+				width: 4.5em;
+				}
+
+.bgnav, .bgfoot
+				{
+				background-color: rgba(98, 142, 22, 1);
 				}
 
 body
 				{
-				background-color: rgba(33, 66, 99, 1);
-				background-image: url("../img/pw_maze_black.png");
+				background-color: rgba(118, 171, 27, 1);
+			/*	background-image: url("../img/background-grass.jpg");*/
+				}
+
+.canvas
+				{
+				box-shadow: 0 0 6px -4px rgb(0, 0, 0) inset;
+				height: 100px;
+				margin: 0.1em 0 0.3em;
+				}
+
+.canvas1_3
+				{
+				box-shadow: 0 0 6px -4px rgb(0, 0, 0) inset;
+				height: 100px;
+				margin: 0.1em 0 0.3em;
+				}
+
+.canvas img 
+				{
+				clip: rect(5px, 285px, 95px, 5px);
+				position: absolute;
+				}
+
+.canvas1_3 img
+				{
+				clip: rect(5px, 198px, 95px, 5px);
+				position: absolute;
 				}
 
 .CarteMenu
@@ -81,10 +113,31 @@ body
 
 #carte_content>article
 				{
-				width: 50%;
-				float: right;
-				padding: 0.3em 0.6em;
+				float: left;
+				height: 20em;
+				margin: 0.5em 1% 0.3em;
 				overflow: hidden;
+				padding: 0.3em 0.5em;
+				width: 48%;
+				border-radius: 0.1em;
+				background-color: rgba(98, 142, 22, 1);
+				color: rgba(0, 0, 0, 1);
+				}
+
+#carte_content>article h3
+				{
+				text-align: left;
+				color: rgba(255, 165, 0, 1)
+				}
+
+#carte_content>article form
+				{
+				text-align: center;
+				}
+
+#carte_content article img
+				{
+
 				}
 
 #carte_content p
@@ -92,11 +145,7 @@ body
 				font-size: .7em;
 				line-height: 1.2em;
 				text-align: justify;
-				}
-
-#carte_content article img
-				{
-				width: 100%;
+				padding-bottom: 0.3em;
 				}
 
 #carte_nav
@@ -110,20 +159,20 @@ body
 				list-style: none;
 				}
 
-#carte_nav_list>li
+#carte_nav_list li
 				{
 				float:left;
 				width:20%;
 				}
 
-#carte_nav_list>li>a
+#carte_nav_list li a
 				{
 				display:block;
 				height:2rem;
 				text-align: center;
 				padding-top: 0.5rem;
-				background:grey;
-				color:white;
+				background:rgba(98, 142, 22, 1);
+				color: rgba(255, 255, 255, 1);
 				}
 
 #carte_article
@@ -163,6 +212,50 @@ body
 				width: 14em;
 				}
 
+#coord
+				{
+				margin: 0 auto;
+				width: 100%;
+				}
+
+#coord p
+				{
+				padding: 0 0.3em;
+				}
+
+#coord h2
+				{
+				font-size: 1.7rem;
+				color: orange;
+				padding: 0.1em 0 0.5em;
+				}
+    
+#coord h3
+				{
+				font-size: 1.3rem;
+				color: yellow;
+				padding: 0.1em 0 0.3em;
+				}
+
+#coord iframe
+				{
+				z-index: 0;
+				width: 66.6666%;
+				float: right;
+				}
+
+#coord>p
+				{
+				font-size: 1.3rem;
+				color: grey;
+				}
+
+#coord>span
+				{
+				font-size: 1rem;
+				color: pink;
+				}
+
 .fixT
 				{
 				position: fixed;
@@ -197,7 +290,7 @@ body
 
 .foot
 				{
-				font-family: 'Signika',sans-serif;
+				font-family: 'Signika Negative', 'sans-serif';
 				font-size: 0.7em;
 				padding: 0.3em 0;
 				text-align: center;
@@ -217,12 +310,26 @@ header
 
 h1
 				{
-				color: rgba(255, 255, 255, 1);
-				font-family: 'Lilita One', cursive;
-				font-size: 4em;
+				color: rgb(255, 165, 0);
+				font-family: 'abugslife';
+				font-size: 5.2em;
+				line-height: 1.5em;
 				text-align: center;
-				line-height: 2em;
 				}
+
+
+h2, h3
+				{
+				font-family: 'Trebuchet MS', 'sans-serif';
+				text-transform: uppercase;
+				}
+
+h4, h5, h6
+				{
+				font-family: 'Arial', 'sans-serif';
+				text-transform: uppercase;
+				}
+
 
 .HomeSlider
 				{
@@ -234,7 +341,7 @@ h1
 
 html
 				{
-				font-family: 'Sniglet', cursive;
+				font-family: 'Open Sans', 'sans-serif';
 				}
 
 #infoaff
@@ -253,6 +360,23 @@ html
 				color: white;
 				}
 
+.inframeimg
+				{
+				background-color: rgba(98, 142, 22, 1);
+				color: rgba(255, 255, 255, 1);
+				height: 480px;
+				padding: 0.3em 0.3em 0.3em 0.6em;
+				text-align: justify;
+				width: 33.3333%;
+				}
+
+.inframeimg p
+				{
+				font-family: sans-serif;
+				font-size: 0.85em;
+				}
+
+
 .indication
 				{
 				color: rgba(255, 255, 255, 1);
@@ -264,8 +388,8 @@ html
 
 .inlogin
 				{
-				position: relative;
-				top: -8.5em;
+				position: absolute;
+				top: 0.7em;
 				width: 230px;
 				}
 
@@ -273,7 +397,7 @@ input
 				{
 				background-color: rgba(255, 255, 255, 0.2);
 				border: medium none;
-				color: #FFFFFF;
+				color: rgba(255, 165, 0, 1);
 				margin-top: 0.125em;
 				padding: 0.3em;
 				margin: 0.0625em;
@@ -327,6 +451,27 @@ input.radio
 
 				}
 
+.Inthebox1_3
+				{
+				
+				}
+
+
+
+.Inthebox33
+				{
+				float:left;
+				width:33.3333%;
+				padding: 0 0.3em;
+				}
+
+.Inthebox33 h3
+				{
+				color: rgba(255, 165, 0, 1)
+				}
+
+
+
 .K_line
 				{
 				max-width: 960px;
@@ -347,27 +492,25 @@ input.radio
 
 .main
 				{
-				background-color: rgba(33, 66, 99, 0.3);
-				position: relative;
-				top: 0;
+				/*background-color: rgba(100, 160, 5, 1);*/
 				bottom: 0;
 				min-height: 50%;
-				height: 50em;
-
+				overflow: hidden;
+				padding-bottom: 1.8em;
+				position: relative;
+				top: 0;
+				height: 100%;
 				}
 
 .message
 				{
-				color: rgba(255, 0, 0, 1);
+				color: rgba(81, 117, 18, 1);
 				}
 
 nav
 				{
-				line-height: 1em;
-				height: 3em;
-				max-width: 17em;
-				width: 25%;
-				clear: both;
+				line-height: 2.5em;
+				color: rgba(255, 255, 255, 1);
 				}
 
 nav ul
@@ -375,7 +518,13 @@ nav ul
 				left: 3em;
 				}
 
-nav ul li:before
+
+nav ul:before
+				{
+				content: "|";
+				}
+
+nav ul:after
 				{
 				content: "|";
 				}
@@ -385,6 +534,13 @@ nav ul li
 				display: inline;
 				line-height: 2.5em;
 				}
+
+p
+				{
+				font-weight: 100;
+				font-family: 'Open Sans', 'sans-serif';
+				}
+
 
 p.alertmsg
 				{
@@ -457,22 +613,29 @@ p.alertmsg
 
 .txterror
 				{
-				color: rgba(120, 120, 120, 1);
-				left: 0em;
+				bottom: 1.9em;
+				color: rgba(81, 117, 18, 1);
+				left: 0;
 				position: relative;
-				top: -1.9em;
+				}
+
+.txtdescrip
+				{
+				height: 153px;
+				}
+
+ul, ol
+				{
+				margin-left: 0;
+				padding-left: 0;
 				}
 
 
-
-
-
-
-
-
-
-
-
+.essay
+				{
+				position: absolute;
+				bottom: 30px;
+				}
 
 
 

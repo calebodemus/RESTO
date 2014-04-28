@@ -1,13 +1,19 @@
-<article>
+<article class="Inthebox1_3">
     <h3><?=$titre?></h3>
-    <img src="<?=$url?>" alt="<?=$alt?>"/>
+    <div class="canvas">
+        <img src="<?=$url?>" alt="<?=$alt?>"/>
+    </div>
+
+    <div class="txtdescrip">
     <p><?=$descriptif?></p>
     <p><?=$prix_livraison?></p>
     <p><?=$prix_emporter?></p>
+    </div>
 
     <form action="index.php?page=carte&cart=plat&action=*&id=<?=$id_carte?>" method="post">
         <input type="submit" formaction="index.php?page=carte&cart=plat&action=s&id=<?=$id_carte?>" value="-"/>
         <input type="number" name="<?=$id_carte?>" oninput="this.form.submit()" value="<?=$quantite?>" placeholder="quantité"/>
         <input type="submit" formaction="index.php?page=carte&cart=plat&action=a&id=<?=$id_carte?>" value="+"/>
     </form>
+
 </article>
