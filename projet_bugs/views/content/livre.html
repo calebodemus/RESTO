@@ -1,24 +1,28 @@
+<div id="comments">
+       
+	<ul class="commentlist">
 
+		<li >
 
+			<div class="author">
 
+				<img class="avatar" src="images/demo/avatar.gif" width="32" height="32" alt="" />
+				<span class="name">
+					<a href="#"><?php echo $commentLogin ?></a>
+				</span>
+				<span class="à ecrit">à ecrit:</span>
 
+			</div>
 
+			<div class="datecomm">
 
+				<a href="#"><?php echo $commentDate ?></a>
+			</div>
 
-<div id= 'displaycomment'>
+			<p><?php echo $commentAff ?></p>
 
+		</li>
 
-
-		<div id='auteurcomment'>
-				<h3>Auteur : <?php echo $commentLogin ?></h3>
-				<p><?php echo $commentDate ?></p>
-				
-		</div>
-		
-		<div id= 'commentaff'>
-		    
-		    <p><?php echo $commentAff ?></p>
-		    
-		</div>
+	</ul>
 
 </div>

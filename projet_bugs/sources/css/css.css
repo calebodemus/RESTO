@@ -64,18 +64,19 @@ a:hover
 .bntLog
 				{
 				width: 50%;
-				max-width: 4.5em;
+				max-width: 4.55em;
 				width: 4.5em;
 				}
 
 .bgnav, .bgfoot
 				{
-				background-color: rgba(98, 142, 22, 1);
+				background-color: rgba(101, 124, 87, 1);
+                color: rgba(255, 255, 255, 1);
 				}
 
 body
 				{
-				background-color: rgba(118, 171, 27, 1);
+				background-color: rgba(68, 79, 69, 1);
 			/*	background-image: url("../img/background-grass.jpg");*/
 				}
 
@@ -101,7 +102,7 @@ body
 
 .canvas1_3 img
 				{
-				clip: rect(5px, 198px, 95px, 5px);
+				clip: rect(5px, 192px, 95px, 5px);
 				position: absolute;
 				}
 
@@ -120,7 +121,7 @@ body
 				padding: 0.3em 0.5em;
 				width: 48%;
 				border-radius: 0.1em;
-				background-color: rgba(98, 142, 22, 1);
+				background-color: rgba(101, 124, 87, 1);
 				color: rgba(0, 0, 0, 1);
 				}
 
@@ -143,7 +144,7 @@ body
 #carte_content p
 				{
 				font-size: .7em;
-				line-height: 1.2em;
+				line-height: 1.1em;
 				text-align: justify;
 				padding-bottom: 0.3em;
 				}
@@ -170,8 +171,8 @@ body
 				display:block;
 				height:2rem;
 				text-align: center;
-				padding-top: 0.5rem;
-				background:rgba(98, 142, 22, 1);
+				line-height: 1.8em;
+				background: rgba(101, 124, 87, 1);
 				color: rgba(255, 255, 255, 1);
 				}
 
@@ -187,7 +188,55 @@ body
 				width:33.3333%;
 				padding-top: 0.5rem;
 				text-align: center;
-				background-color: rgba(128, 128, 128, 0.5);
+				background-color: rgba(101, 124, 87, 1);
+				}
+
+#comments
+				{
+				margin-bottom: 2.5rem;
+				}
+
+#comments .commentlist ul
+				{
+				list-style: none;
+				}
+
+#comments .commentlist li
+				{
+				background-color: #6c6c6c;
+				color: #c6dbbe;
+				margin: 0 0 0.7rem 0;
+				padding: 1rem;
+				list-style: none;
+				}
+
+#comments .commentlist li a
+				{
+				color: #FFFF00;
+				}
+
+#comments .commentlist .author .name
+				{
+				font-weight: bold;
+				}
+
+#comments .commentlist .datecomm
+				{
+				font-size: smaller;
+				}
+
+#comments .commentlist p
+				{
+				margin: 0.625rem 0.4rem 0.7rem 0;
+				font-weight: normal;
+				text-transform: none;
+				}
+
+#comments .commentlist li .avatar
+				{
+				float: right;
+				border: 0.05rem solid #EEEEEE;
+				margin: 0 0 0 0.7rem;
 				}
 
 #compte>h1
@@ -312,9 +361,9 @@ h1
 				{
 				color: rgb(255, 165, 0);
 				font-family: 'abugslife';
-				font-size: 5.2em;
-				line-height: 1.5em;
+				font-size: 4em;
 				text-align: center;
+				line-height: 2em;
 				}
 
 
@@ -388,14 +437,14 @@ html
 
 .inlogin
 				{
-				position: absolute;
-				top: 0.7em;
+				position: relative;
+				top: -8.5em;
 				width: 230px;
 				}
 
 input
 				{
-				background-color: rgba(255, 255, 255, 0.2);
+				background-color: rgba(255, 255, 255, 0.1);
 				border: medium none;
 				color: rgba(255, 165, 0, 1);
 				margin-top: 0.125em;
@@ -541,12 +590,11 @@ p
 				font-family: 'Open Sans', 'sans-serif';
 				}
 
-
 p.alertmsg
 				{
 				color: rgba(220, 220, 220 ,1);
 				position: relative;
-				top: -2em;
+				top: -3em;
 				}
 
 .point_article
@@ -613,10 +661,10 @@ p.alertmsg
 
 .txterror
 				{
-				bottom: 1.9em;
 				color: rgba(81, 117, 18, 1);
-				left: 0;
+				left: 0em;
 				position: relative;
+				top: -1.9em;
 				}
 
 .txtdescrip
