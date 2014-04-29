@@ -1,1 +1,69 @@
-<h1>reservation</h1>
+    <form method="post" action="index.php?page=reservation">
+        <h1>Jour et heure de la réservation (au moins 24h avant)</h1>
+        <?php if(isset($erreur_date)) echo '<span>'.$erreur_date.'</span></br>'; ?>
+         <?php if(isset($erreur_heure)) echo '<span>'.$erreur_heure.'</span></br>'; ?>
+         <?php if(isset($erreur_couverts)) echo '<span>'.$erreur_couverts.'</span></br>'; ?>
+        <label for="jour">Jour de la réservation</label><br />
+        <select name="jour" id="jour">
+            <?php
+            $i = 1;
+            while($i <= 31)
+            {
+                if(isset($jour) && ($jour == $i)){
+                    echo '<option value="'.$i.'" selected>'.$i.'</option>';
+                }else{
+                    echo '<option value="'.$i.'">'.$i.'</option>';
+                }
+                $i++;
+            }
+            ?>
+        </select>
+        <select name="mois">
+            <?php
+            $mois_francais = array('','Janvier','Février','Mars','Avril','Mai','Juin','Juillet','Aout','Septembre','Octobre','Novembre','Décembre');
+            $i = 1;
+            while($i <= 12)
+            {
+                if(isset($mois) && ($mois == $i)){
+                    echo '<option value="'.$i.'" selected>'.$mois_francais[$i].'</option>';
+                }else{
+                    echo '<option value="'.$i.'">'.$mois_francais[$i].'</option>';
+                }
+                $i++;
+            }
+            ?>
+        </select>
+        <select name="annee">
+            <?php
+            $annee_actuelle = date('Y');
+            $i = 0;
+            while($i < 3)
+            {
+                $annees = $annee_actuelle + $i;
+                if(isset($annee) && ($annee == $annees)){
+                    echo '<option value="'.$annees.'" selected>'.$annees.'</option>';
+                }else{
+                    echo '<option value="'.$annees.'">'.$annees.'</option>';
+                }
+                $i++;
+            }
+            ?>
+        </select>
+        <br />
+        <label for="heures">Heure de la réservation (les heures de réservation doivent être comprises entre 11:30 et 13:30, et de 19:30 à 21:30</label>
+        <br />
+        <input type="text" name="heures" id="heures" class="small" value="<?php if(isset($heures)) echo $heures;?>" />:
+        <input type="text" name="minutes" class="small" value="<?php if(isset($minutes)) echo $minutes;?>" />
+        <br />
+        <label for="couverts">Nombre de couverts</label><br />
+        <input type="text" name="couverts" id="couverts" class="small" value="<?php if(isset($couverts)) echo $couverts;?>"/><br />
+        <p><?=$message_erreur?></p>
+        <h1>Informations complémentaires</h1>
+        <?php if(isset($erreur_nom)) echo '<span>'.$erreur_nom.'</span></br>'; ?>
+        <?php if(isset($erreur_email)) echo '<span>'.$erreur_email.'</span></br>'; ?>
+        <label for="nom">Votre nom</label><br />
+        <input type="text" name="nom" id="nom" placeholder="Exemple : Jean Dupont" value="<?php if(isset($nom)) echo $nom;?>"/><br />
+        <label for="email">Votre adresse email</label>
+        <input type="text" name="email" id="email" placeholder="Exemple : jeandupont@gmail.com" value="<?php if(isset($email)) echo $email;?>" /><br />
+        <input type="submit" value="Reserver"/>
+    </form>
