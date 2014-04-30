@@ -164,7 +164,17 @@ body
 				{
 				float:left;
 				width:20%;
+				background: rgba(101, 124, 87, 1);
 				}
+
+#carte_nav_list li:hover
+				{
+				background-color: blue;
+				float:left;
+				width:20%;
+				}
+
+
 
 #carte_nav_list li a
 				{
@@ -172,9 +182,11 @@ body
 				height:2rem;
 				text-align: center;
 				line-height: 1.8em;
-				background: rgba(101, 124, 87, 1);
+				
 				color: rgba(255, 255, 255, 1);
 				}
+
+
 
 #carte_article
 				{
@@ -580,8 +592,18 @@ nav ul:after
 
 nav ul li
 				{
-				display: inline;
+				display: inline-block;
 				line-height: 2.5em;
+				padding: 0 0.3rem;
+
+				}
+
+nav ul li:hover
+				{
+					background-color: orange;
+				
+				line-height: 2.5em;
+				
 				}
 
 p
